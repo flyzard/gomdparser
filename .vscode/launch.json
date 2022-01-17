@@ -10,8 +10,7 @@
             "request": "launch",
             "mode": "auto",
             "program": "${fileDirname}",
-            "coreFilePath": "../main.go",
-            "args": ["release_notes.md", "www/latest_release.html", "www/releases.html", "3"]
+            "coreFilePath": "../main.go"
         }
     ]
 }

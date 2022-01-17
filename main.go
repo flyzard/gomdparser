@@ -49,19 +49,7 @@ func getArguments(givenArgs []string) (string, string, string, int) {
         }
    }
 
-    // for i := range args {
-    //     if size >= i+2 {
-    //         args[i] = givenArgs[i+1]
-    //     }
-
-    //     if i == 1 {
-    //         if _, err := os.Stat(args[i]); err != nil {
-    //             log.Fatal(err)
-    //         }
-    //     }
-    // }
-
-    nReleases := 1
+    nReleases := 3
     if size > 4 {
         nReleases, _ = strconv.Atoi(givenArgs[4])
     }
