@@ -21,9 +21,17 @@ func main() {
 
     // Convert the full release notes file to MD
     convertContentToMd(content, htmlFilePath)
+
+    string_content := string(content)
     
     // Get only the latest release, given that they are separated by ##
-    lenght := strings.Index(string(content)[nReleases + 1:], "##")
+    lenght := strings.Index(string_content[2:], "##")
+    var from int
+    for i := 0; i < nReleases-1; i++ {
+        from = strings.Index(string_content[lenght:], "##")+2
+        lenght += strings.Index(string_content[lenght + from:], "##")
+    }
+
     content = content[0:lenght]
 
     // Convert the nReleases to html
