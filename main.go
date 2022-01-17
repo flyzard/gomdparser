@@ -10,7 +10,11 @@ import (
 )
 
 func main() {
-    content, err := ioutil.ReadFile("release_notes.md")
+
+    markdownFilePath := os.Args[1]
+    htmlFilePath := os.Args[2]
+
+    content, err := ioutil.ReadFile(markdownFilePath)
     if err != nil {
         log.Fatal(err)
     }
@@ -20,7 +24,7 @@ func main() {
     content = content[0:lenght]
 	html := markdown.ToHTML(content, nil, nil)
 
-	f, err := os.OpenFile("www/LatestReleaseNotes.html", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0755)
+	f, err := os.OpenFile(htmlFilePath, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0755)
     if err != nil {
         log.Fatal(err)
     }
