@@ -19,6 +19,11 @@ func main() {
         log.Fatal(err)
     }
 
+    if len(content) < 2 {
+        println("Please check whether the MD is empty or you've given the path to the right file!");
+        os.Exit(0)
+    }
+
     // Convert the full release notes file to MD
     convertContentToMd(content, htmlFilePath)
 
@@ -52,7 +57,8 @@ func getArguments(givenArgs []string) (string, string, string, int) {
 
        if i == 1 {
             if _, err := os.Stat(args[i-1]); err != nil {
-                log.Fatal(err)
+                println("Please make sure the file", args[i-1], "exists!")
+                os.Exit(0)
             }
         }
    }
